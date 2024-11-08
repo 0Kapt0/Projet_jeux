@@ -67,7 +67,7 @@ public:
 
 //bonsoir
 
-//CACAqqqqqqqqqqq
+//Salut c lolo
 
 //Classe Archer avec une attaque à distance
 class Archer : public Personnage {
