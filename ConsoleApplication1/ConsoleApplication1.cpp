@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 #include <iostream>
 #include <vector>
 #include <cstdlib>
@@ -30,7 +28,6 @@ public:
         int nbEau = 0;  // Nombre de points d'eau
         int nbRessources = 0;  // Nombre de ressources
 
-<<<<<<< HEAD
         // Placer les points d'eau (maximum 5)
         while (nbEau < 5) {
             int x = rand() % (LARGEUR_MAP - 1);
@@ -41,99 +38,6 @@ public:
                 map[y + 1][x] = EAU;
                 map[y + 1][x + 1] = EAU;
                 nbEau++;
-=======
-    void diminuerSante(int degats) {
-        sante -= degats;
-        if (sante < 0) sante = 0;
-    }
-
-    void restaurerSante(int points) {
-        sante += points;
-        if (sante > santeMax) sante = santeMax;
-    }
-
-    bool estVivant() const {
-        return sante > 0;
-    }
-
-    std::string getNom() const { return nom; }
-    int getSante() const { return sante; }
-    int getScore() const { return score; }
-};
-
-//Classe Guerrier avec attaque puissante
-class Guerrier : public Personnage {
-public:
-    Guerrier(std::string nom) : Personnage(nom, 100) {}
-
-    void AuraSword(Personnage& cible) {
-        int degats = 20;
-        cible.diminuerSante(degats);
-        score += 20;
-        std::cout << nom << " utilise attaque [Epee d'Aura] sur " << cible.getNom()
-            << " pour " << degats << " points de degats." << std::endl;
-    }
-
-    void utiliserCompetenceSpeciale(Personnage& cible) override {
-        //Génére un nombre entre 0 et 1
-        int chance = rand() % 2; //50% de chance d'utiliser AuraSword
-        if (chance == 1) {
-            AuraSword(cible);
-        }
-        else {
-            std::cout << nom << " tente d'utiliser [Epee d'Aura], mais echoue." << std::endl;
-        }
-    }
-};
-
-//bonsoir et bonjour
-
-//Salut c lolo
-
-//Classe Archer avec une attaque à distance
-class Archer : public Personnage {
-public:
-    Archer(std::string nom) : Personnage(nom, 80) {}
-
-    void TirPercant(Personnage& cible) {
-        int degats = 15;
-        cible.diminuerSante(degats);
-        score += 15;
-        std::cout << nom << " utilise [Tir Percant] sur " << cible.getNom()
-            << " pour " << degats << " points de degats." << std::endl;
-    }
-
-    void utiliserCompetenceSpeciale(Personnage& cible) override {
-        //Genere un nombre entre 0 et 1
-        int chance = rand() % 2;
-        if (chance == 1) {
-            TirPercant(cible);
-        }
-    }
-};
-
-// Boucle de jeu sans bibliothèques de mémoire et d'algorithme
-void boucleDeJeu(std::vector<Personnage*>& personnages) {
-    int tour = 1;
-    bool jeuActif = true;
-
-    while (jeuActif) {
-        tour = tour + 1;
-        for (size_t i = 0; i < personnages.size(); ++i) {
-            if (personnages[i]->estVivant()) {
-                int action = std::rand() % 2;  // Choix aléatoire de l'action
-                size_t cibleIndex = std::rand() % personnages.size();
-                Personnage& cible = *personnages[cibleIndex];
-
-                if (action == 0) {
-                    personnages[i]->attaquer(cible);
-                    std::cout << "Tour : " << tour << " ";
-                }
-                else {
-                    personnages[i]->utiliserCompetenceSpeciale(cible);
-                    std::cout << "Tour : " << tour << " ";
-                }
->>>>>>> 680fe1c2a2b91a0f28cdab7ebd277cde5d437efd
             }
         }
 
@@ -173,4 +77,3 @@ int main() {
 
 
 
->>>>>>> Stashed changes
