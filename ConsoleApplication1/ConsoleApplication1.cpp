@@ -65,7 +65,7 @@ public:
     }
 };
 
-//bonsoir
+//bonsoir et bonjour
 
 //CACAqqqqqqqqqqq
 
