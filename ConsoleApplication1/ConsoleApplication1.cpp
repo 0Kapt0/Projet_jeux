@@ -64,6 +64,9 @@ public:
         }
     }
 };
+
+//bonsoir
+
 //Classe Archer avec une attaque à distance
 class Archer : public Personnage {
 public:
