@@ -117,8 +117,8 @@ public:
 
         // Placer les points d'eau (maximum 5)
         while (nbEau < 3) {
-            int x = rand() % (LARGEUR_MAP - 1);
-            int y = rand() % (HAUTEUR_MAP - 1);
+            int x = rand() % LARGEUR_MAP;
+            int y = rand() % HAUTEUR_MAP;
             if (map[y][x].animal == ' ') {
                 map[y][x].animal = EAU;
                 map[y][x].couleur = COLOR_BLUE; // Bleu pour l'eau
