@@ -102,10 +102,15 @@ public:
     // Afficher la carte
     void afficherCarte() const {
         for (int y = 0; y < HAUTEUR_MAP; ++y) {
+            
             for (int x = 0; x < LARGEUR_MAP; ++x) {
-                std::cout << map[y][x] << " ";
+                std::cout << "| "<< map[y][x] << " ";
             }
-            std::cout << std::endl;
+            std::cout << "|" << std::endl;
+            for (int x = 0; x < LARGEUR_MAP; ++x) {
+                std::cout << " ---";
+            }
+            std::cout << " " << std::endl;
         }
     }
 };
