@@ -9,7 +9,7 @@ const int HAUTEUR_MAP = 20;
 
 // Définition des types de terrain
 const char VIDE = '.';
-const char RESSOURCE = 'R';
+const char TREFLE = 'R';
 const char EAU = 'W';
 
 // Les nombres des animeaux
@@ -93,7 +93,7 @@ public:
             int x = rand() % LARGEUR_MAP;
             int y = rand() % HAUTEUR_MAP;
             if (map[y][x] == VIDE) {
-                map[y][x] = RESSOURCE;
+                map[y][x] = TREFLE;
                 nbRessources++;
             }
         }
