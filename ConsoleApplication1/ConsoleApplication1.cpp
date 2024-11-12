@@ -12,51 +12,55 @@ const char VIDE = '.';
 const char TREFLE = 'R';
 const char EAU = 'W';
 
-// Les nombres des animeaux
-int NA;
-int NR;
-int NL;
-int NT;
+// Les nombres des animaux
+int NA = 0;  // Nombre d'aigles
+int NR = 0;  // Nombre de renards
+int NL = 0;  // Nombre de lapins
+int NT = 0;  // Nombre de trèfles
 
-//Les classes des animeaux
+// Les classes des animaux
 class Animal {
 public:
     int nombre;
-
     Animal(int n) : nombre(n) {}
 };
 
-struct cell {
-    bool Vivant = true;
-    int Ressource = 0;
-    int Eau = 0;
-    int Quete = 0;
-    int Deplacement = 0;
+// Structure représentant une cellule de la carte
+struct Cell {
+    bool vivant = true;
+    int ressource = 0;
+    int eau = 0;
+    int quete = 0;
+    int deplacement = 0;
 };
-cell Animal;
 
 class Aigle : public Animal {
 public:
-    Aigle(int n) : Animal(NA) {}
-
+    Aigle(int n) : Animal(n) {}
+    void seDeplacer() {
+        std::cout << "L'aigle se déplace." << std::endl;
+    }
 };
 
 class Renard : public Animal {
 public:
-    Renard(int n) : Animal(NR) {}
-
+    Renard(int n) : Animal(n) {}
+    void seDeplacer() {
+        std::cout << "Le renard se déplace." << std::endl;
+    }
 };
 
 class Lapin : public Animal {
 public:
-    Lapin(int n) : Animal(NL) {}
-
+    Lapin(int n) : Animal(n) {}
+    void seDeplacer() {
+        std::cout << "Le lapin se déplace." << std::endl;
+    }
 };
 
 class Trefle : public Animal {
 public:
-    Trefle(int n) : Animal(NT) {}
-
+    Trefle(int n) : Animal(n) {}
 };
 
 // Classe représentant la carte
@@ -87,7 +91,7 @@ public:
                 nbEau++;
             }
         }
-        
+
         // Placer les ressources (maximum 10)
         while (nbRessources < 10) {
             int x = rand() % LARGEUR_MAP;
@@ -102,9 +106,8 @@ public:
     // Afficher la carte
     void afficherCarte() const {
         for (int y = 0; y < HAUTEUR_MAP; ++y) {
-            
             for (int x = 0; x < LARGEUR_MAP; ++x) {
-                std::cout << "| "<< map[y][x] << " ";
+                std::cout << "| " << map[y][x] << " ";
             }
             std::cout << "|" << std::endl;
             for (int x = 0; x < LARGEUR_MAP; ++x) {
@@ -113,19 +116,56 @@ public:
             std::cout << " " << std::endl;
         }
     }
+
+    // Placer des animaux sur la carte
+    void placerAnimaux(int nombreAigles, int nombreRenards, int nombreLapins) {
+        // Placer les aigles
+        for (int i = 0; i < nombreAigles; ++i) {
+            int x = rand() % LARGEUR_MAP;
+            int y = rand() % HAUTEUR_MAP;
+            if (map[y][x] == VIDE) {
+                map[y][x] = 'A'; // A pour Aigle
+                std::cout << "Aigle (" << x << ", " << y << ")." << std::endl;
+            }
+        }
+
+        // Placer les renards
+        for (int i = 0; i < nombreRenards; ++i) {
+            int x = rand() % LARGEUR_MAP;
+            int y = rand() % HAUTEUR_MAP;
+            if (map[y][x] == VIDE) {
+                map[y][x] = 'R'; // R pour Renard
+                std::cout << "Renard (" << x << ", " << y << ")." << std::endl;
+            }
+        }
+
+        // Placer les lapins
+        for (int i = 0; i < nombreLapins; ++i) {
+            int x = rand() % LARGEUR_MAP;
+            int y = rand() % HAUTEUR_MAP;
+            if (map[y][x] == VIDE) {
+                map[y][x] = 'L'; // L pour Lapin
+                std::cout << "Lapin (" << x << ", " << y << ")." << std::endl;
+            }
+        }
+    }
 };
 
 int main() {
     srand(time(0));  // Initialisation du générateur de nombres aléatoires
 
-    Carte carte;  // Créer une carte
+    // Créer la carte
+    Carte carte;
+
+    // Remplir la carte avec des ressources et des points d'eau
+    carte.remplirMap();
+
+    // Placer des animaux (aigles, renards, lapins)
+    carte.placerAnimaux(2, 8, 18);
 
     // Afficher la carte
-    std::cout << "Bienvenu dans le simulateur ecosysteme\n";
+    std::cout << "Bienvenue dans le simulateur ecosysteme\n";
     carte.afficherCarte();
 
     return 0;
 }
-
-
-
