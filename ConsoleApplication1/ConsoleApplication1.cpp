@@ -132,7 +132,7 @@ public:
             int y = rand() % HAUTEUR_MAP;
             if (map[y][x].animal == ' ') {
                 map[y][x].animal = TREFLE;
-                map[y][x].couleur = COLOR_GREEN; // Vert pour le trèfle
+                map[y][x].couleur = COLOR_WHITE; // Vert pour le trèfle
                 nbRessources++;
             }
         }
@@ -146,7 +146,7 @@ public:
             int y = rand() % HAUTEUR_MAP;
             if (map[y][x].animal == ' ') { // Si la case est vide
                 map[y][x].animal = 'A'; // A pour Aigle
-                map[y][x].couleur = COLOR_YELLOW; // Couleur jaune pour les aigles
+                map[y][x].couleur = COLOR_RED; // Couleur jaune pour les aigles
             }
         }
 
@@ -156,7 +156,7 @@ public:
             int y = rand() % HAUTEUR_MAP;
             if (map[y][x].animal == ' ') { // Si la case est vide
                 map[y][x].animal = 'R'; // R pour Renard
-                map[y][x].couleur = COLOR_RED; // Couleur rouge pour les renards
+                map[y][x].couleur = COLOR_YELLOW; // Couleur rouge pour les renards
             }
         }
 
