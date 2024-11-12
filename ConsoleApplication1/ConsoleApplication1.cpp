@@ -40,7 +40,8 @@ public:
                 nbEau++;
             }
         }
-
+        //caca
+        // 
         // Placer les ressources (maximum 10)
         while (nbRessources < 10) {
             int x = rand() % LARGEUR_MAP;
