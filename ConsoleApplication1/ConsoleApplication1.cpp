@@ -12,6 +12,53 @@ const char VIDE = '.';
 const char RESSOURCE = 'R';
 const char EAU = 'W';
 
+// Les nombres des animeaux
+int NA;
+int NR;
+int NL;
+int NT;
+
+//Les classes des animeaux
+class Animal {
+public:
+    int nombre;
+
+    Animal(int n) : nombre(n) {}
+};
+
+struct cell {
+    bool Vivant = true;
+    int Ressource = 0;
+    int Eau = 0;
+    int Quete = 0;
+    int Deplacement = 0;
+};
+cell Animal;
+
+class Aigle : public Animal {
+public:
+    Aigle(int n) : Animal(NA) {}
+
+};
+
+class Renard : public Animal {
+public:
+    Renard(int n) : Animal(NR) {}
+
+};
+
+class Lapin : public Animal {
+public:
+    Lapin(int n) : Animal(NL) {}
+
+};
+
+class Trefle : public Animal {
+public:
+    Trefle(int n) : Animal(NT) {}
+
+};
+
 // Classe représentant la carte
 class Carte {
 public:
@@ -40,8 +87,7 @@ public:
                 nbEau++;
             }
         }
-        //caca
-        // 
+        
         // Placer les ressources (maximum 10)
         while (nbRessources < 10) {
             int x = rand() % LARGEUR_MAP;
