@@ -103,9 +103,15 @@ public:
 
         // Placer les points d'eau (maximum 5)
         while (nbEau < 6) {
+<<<<<<< HEAD
             int x = rand() % (LARGEUR_MAP - 1);
             int y = rand() % (HAUTEUR_MAP - 1);
             if (map[y][x] == VIDE && map[y][x + 1] == VIDE && map[y + 1][x] == VIDE && map[y + 1][x + 1] == VIDE) {
+=======
+            int x = rand() % LARGEUR_MAP;
+            int y = rand() % HAUTEUR_MAP;
+            if (map[y][x] == VIDE) {
+>>>>>>> 4e2ad112534c5f2dc36a06a9a32239a2ea5f7b37
                 map[y][x] = EAU;
                 nbEau++;
             }
