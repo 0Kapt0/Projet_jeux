@@ -4,7 +4,7 @@
 #include <ctime>
 
 // Dimensions de la carte
-const int LARGEUR_MAP = 50;
+const int LARGEUR_MAP = 20;
 const int HAUTEUR_MAP = 20;
 
 // Définition des types de terrain
