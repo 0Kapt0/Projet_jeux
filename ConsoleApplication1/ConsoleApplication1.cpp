@@ -53,7 +53,7 @@ class Aigle : public Animal {
 public:
     Aigle(int n) : Animal(n) {}
     void seDeplacer() {
-        std::cout << "L'aigle se déplace." << std::endl;
+        std::cout << "aigle se déplace." << std::endl;
     }
     void Deplacement()
     {
