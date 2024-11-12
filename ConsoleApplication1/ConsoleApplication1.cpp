@@ -23,6 +23,7 @@ class Animal {
 public:
     int nombre;
     Animal(int n) : nombre(n) {}
+    virtual void Deplacement() = 0;
 };
 
 // Structure représentant une cellule de la carte
@@ -40,6 +41,14 @@ public:
     void seDeplacer() {
         std::cout << "L'aigle se déplace." << std::endl;
     }
+    void Deplacement()
+    {
+        int n = 0;
+        while (n < 3)
+        {
+            int n = rand() % 5;
+        }
+    }
 };
 
 class Renard : public Animal {
@@ -48,6 +57,15 @@ public:
     void seDeplacer() {
         std::cout << "Le renard se déplace." << std::endl;
     }
+    void Deplacement()
+    {
+        int n = 0;
+        while (n < 2)
+        {
+            int n = rand() % 4;
+        }
+    }
+
 };
 
 class Lapin : public Animal {
@@ -55,6 +73,10 @@ public:
     Lapin(int n) : Animal(n) {}
     void seDeplacer() {
         std::cout << "Le lapin se déplace." << std::endl;
+    }
+    void Deplacement()
+    {
+        int n = 2;
     }
 };
 
