@@ -9,7 +9,7 @@ const int HAUTEUR_MAP = 20;
 
 // Définition des types de terrain
 const char VIDE = '.';
-const char TREFLE = 'R';
+const char TREFLE = 'T';
 const char EAU = 'W';
 
 // Les nombres des animaux
