@@ -122,7 +122,6 @@ public:
             int y = rand() % HAUTEUR_MAP;
             if (map[y][x] == VIDE) {
                 map[y][x] = 'A'; // A pour Aigle
-                std::cout << "Aigle (" << x << ", " << y << ")." << std::endl;
             }
         }
 
@@ -131,8 +130,7 @@ public:
             int x = rand() % LARGEUR_MAP;
             int y = rand() % HAUTEUR_MAP;
             if (map[y][x] == VIDE) {
-                map[y][x] = 'R'; // R pour Renard
-                std::cout << "Renard (" << x << ", " << y << ")." << std::endl;
+                map[y][x] = 'R'; // R pour renard
             }
         }
 
@@ -142,7 +140,6 @@ public:
             int y = rand() % HAUTEUR_MAP;
             if (map[y][x] == VIDE) {
                 map[y][x] = 'L'; // L pour Lapin
-                std::cout << "Lapin (" << x << ", " << y << ")." << std::endl;
             }
         }
     }
