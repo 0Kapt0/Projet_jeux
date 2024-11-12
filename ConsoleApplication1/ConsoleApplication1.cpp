@@ -87,11 +87,16 @@ public:
         int nbEau = 0;  // Nombre de points d'eau
         int nbRessources = 0;  // Nombre de ressources
 
+<<<<<<< HEAD
         // Placer les points d'eau (maximum 5)
         while (nbEau < 5) {
+=======
+        // Placer les points d'eau (maximum 6)
+        while (nbEau < 6) {
+>>>>>>> ee51a775c88a81ec5a83d0ecce56c9ba13326208
             int x = rand() % (LARGEUR_MAP - 1);
             int y = rand() % (HAUTEUR_MAP - 1);
-            if (map[y][x] == VIDE && map[y][x + 1] == VIDE && map[y + 1][x] == VIDE && map[y + 1][x + 1] == VIDE) {
+            if (map[y][x] == VIDE) {
                 map[y][x] = EAU;
                 map[y][x + 1] = EAU;
                 map[y + 1][x] = EAU;
@@ -125,6 +130,39 @@ public:
             std::cout << " " << std::endl;
         }
     }
+<<<<<<< HEAD
+=======
+
+    // Placer des animaux sur la carte
+    void placerAnimaux(int nombreAigles, int nombreRenards, int nombreLapins) {
+        // Placer les aigles
+        for (int i = 0; i < nombreAigles; ++i) {
+            int x = rand() % LARGEUR_MAP;
+            int y = rand() % HAUTEUR_MAP;
+            if (map[y][x] == VIDE) {
+                map[y][x] = 'A'; // A pour Aigle
+            }
+        }
+
+        // Placer les renards
+        for (int i = 0; i < nombreRenards; ++i) {
+            int x = rand() % LARGEUR_MAP;
+            int y = rand() % HAUTEUR_MAP;
+            if (map[y][x] == VIDE) {
+                map[y][x] = 'R'; // R pour renard
+            }
+        }
+
+        // Placer les lapins
+        for (int i = 0; i < nombreLapins; ++i) {
+            int x = rand() % LARGEUR_MAP;
+            int y = rand() % HAUTEUR_MAP;
+            if (map[y][x] == VIDE) {
+                map[y][x] = 'L'; // L pour Lapin
+            }
+        }
+    }
+>>>>>>> ee51a775c88a81ec5a83d0ecce56c9ba13326208
 };
 
 int main() {
