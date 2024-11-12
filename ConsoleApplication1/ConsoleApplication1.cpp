@@ -118,7 +118,7 @@ int main() {
     Carte carte;  // Créer une carte
 
     // Afficher la carte
-    std::cout << "Carte générée :\n";
+    std::cout << "Bienvenu dans le simulateur ecosysteme\n";
     carte.afficherCarte();
 
     return 0;
