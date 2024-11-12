@@ -76,14 +76,11 @@ public:
         int nbRessources = 0;  // Nombre de ressources
 
         // Placer les points d'eau (maximum 5)
-        while (nbEau < 5) {
+        while (nbEau < 6) {
             int x = rand() % (LARGEUR_MAP - 1);
             int y = rand() % (HAUTEUR_MAP - 1);
             if (map[y][x] == VIDE && map[y][x + 1] == VIDE && map[y + 1][x] == VIDE && map[y + 1][x + 1] == VIDE) {
                 map[y][x] = EAU;
-                map[y][x + 1] = EAU;
-                map[y + 1][x] = EAU;
-                map[y + 1][x + 1] = EAU;
                 nbEau++;
             }
         }
