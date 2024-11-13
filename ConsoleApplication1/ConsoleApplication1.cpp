@@ -97,41 +97,10 @@ public:
         anciennePos = nouvellePos;
     }
 
-    //Place des animaux sur la carte
-    void placerAnimaux(int nombreAigles, int nombreRenards, int nombreLapins) {
-        //Place les aigles
-        for (int i = 0; i < nombreAigles; ++i) {
-            int x = rand() % LARGEUR_MAP;
-            int y = rand() % HAUTEUR_MAP;
-            if (map[y][x].animal == ' ') { // Si la case est vide
-                map[y][x].animal = 'A'; // A pour Aigle
-                map[y][x].couleur = COLOR_RED; // Couleur jaune pour les aigles
-            }
-        }
-
-        //Place les renards
-        for (int i = 0; i < nombreRenards; ++i) {
-            int x = rand() % LARGEUR_MAP;
-            int y = rand() % HAUTEUR_MAP;
-            if (map[y][x].animal == ' ') { // Si la case est vide
-                map[y][x].animal = 'R'; // R pour Renard
-                map[y][x].couleur = COLOR_YELLOW; // Couleur rouge pour les renards
-            }
-        }
-
-        //Place les lapins
-        for (int i = 0; i < nombreLapins; ++i) {
-            int x = rand() % LARGEUR_MAP;
-            int y = rand() % HAUTEUR_MAP;
-            if (map[y][x].animal == ' ') { // Si la case est vide
-                map[y][x].animal = 'L'; // L pour Lapin
-                map[y][x].couleur = COLOR_GREEN; // Couleur verte pour les lapins
-            }
-        }
-    }
 
     //Affiche la carte
     void afficherCarte() const {
+        system("cls"); // Efface l'écran
         for (int x = 0; x < LARGEUR_MAP; ++x) {
             std::cout << " ---";
         }
@@ -147,6 +116,7 @@ public:
             }
             std::cout << " " << std::endl;
         }
+        setConsoleColor(COLOR_WHITE); // Réinitialise la couleur
     }
 };
 
@@ -159,107 +129,112 @@ protected:
     int couleur;
 
 public:
-    Animal(int x, int y, Carte* _carte, char _symbole, int _couleur)
-        : pos(x, y), carte(_carte), symbole(_symbole), couleur(_couleur) {
-        carte->map[y][x].animal = symbole;
-        carte->map[y][x].couleur = couleur;
+    Animal(Carte* _carte, char _symbole, int _couleur)
+        : carte(_carte), symbole(_symbole), couleur(_couleur) {
+        placerAleatoirement();
     }
 
     virtual void seDeplacer() = 0;
+
+    void placerAleatoirement() {
+        int x, y;
+        do {
+            x = rand() % LARGEUR_MAP;
+            y = rand() % HAUTEUR_MAP;
+        } while (!carte->estlibre(x, y));
+        pos = Position(x, y);
+        carte->map[y][x].animal = symbole;
+        carte->map[y][x].couleur = couleur;
+    }
 };
 
-// Classe Aigle
 class Aigle : public Animal {
 public:
-    Aigle(int x, int y, Carte* _carte) : Animal(x, y, _carte, 'A', COLOR_RED) {}
+    Aigle(Carte* carte) : Animal(carte, 'A', COLOR_RED) {}
 
     void seDeplacer() override {
-        int distance = rand() % 3 + 3; // 3 à 5 cases
-        deplacementAleatoire(distance);
-    }
+        int dx = (rand() % 7) - 3;
+        int dy = (rand() % 7) - 3;
+        Position nouvellePos(pos.x + dx, pos.y + dy);
 
-private:
-    void deplacementAleatoire(int distance) {
-        int dx[] = { 0, 1, 0, -1 }; // Droite, Haut, Gauche, Bas
-        int dy[] = { 1, 0, -1, 0 };
-
-        int direction = rand() % 4;
-        int nx = pos.x + dx[direction] * distance;
-        int ny = pos.y + dy[direction] * distance;
-
-        if (carte->estlibre(nx, ny)) {
-            carte->mettreAJourPosition(pos, Position(nx, ny), symbole, couleur);
+        if (carte->estlibre(nouvellePos.x, nouvellePos.y)) {
+            carte->mettreAJourPosition(pos, nouvellePos, symbole, couleur);
         }
     }
 };
 
-// Classe Renard
 class Renard : public Animal {
 public:
-    Renard(int x, int y, Carte* _carte) : Animal(x, y, _carte, 'R', COLOR_YELLOW) {}
+    Renard(Carte* carte) : Animal(carte, 'R', COLOR_YELLOW) {}
 
     void seDeplacer() override {
-        int distance = rand() % 3 + 2; // 2 à 4 cases
-        deplacementAleatoire(distance);
-    }
+        int dx = (rand() % 5) - 2;
+        int dy = (rand() % 5) - 2;
+        Position nouvellePos(pos.x + dx, pos.y + dy);
 
-private:
-    void deplacementAleatoire(int distance) {
-        int dx[] = { 0, 1, 0, -1 };
-        int dy[] = { 1, 0, -1, 0 };
-
-        int direction = rand() % 4;
-        int nx = pos.x + dx[direction] * distance;
-        int ny = pos.y + dy[direction] * distance;
-
-        if (carte->estlibre(nx, ny)) {
-            carte->mettreAJourPosition(pos, Position(nx, ny), symbole, couleur);
+        if (carte->estlibre(nouvellePos.x, nouvellePos.y)) {
+            carte->mettreAJourPosition(pos, nouvellePos, symbole, couleur);
         }
     }
 };
 
-// Classe Lapin
 class Lapin : public Animal {
 public:
-    Lapin(int x, int y, Carte* _carte) : Animal(x, y, _carte, 'L', COLOR_GREEN) {}
+    Lapin(Carte* carte) : Animal(carte, 'L', COLOR_GREEN) {}
 
     void seDeplacer() override {
-        int distance = 2; // Toujours 2 cases
-        deplacementAleatoire(distance);
+        int dx = (rand() % 3) - 1;
+        int dy = (rand() % 3) - 1;
+        Position nouvellePos(pos.x + dx, pos.y + dy);
+
+        if (carte->estlibre(nouvellePos.x, nouvellePos.y)) {
+            carte->mettreAJourPosition(pos, nouvellePos, symbole, couleur);
+        }
+    }
+};
+
+// Classe Jeu
+class Jeu {
+private:
+    Carte carte;
+    std::vector<Animal*> animaux;
+
+public:
+    Jeu() {
+        // Crée les animaux et les ajoute à la liste
+        for (int i = 0; i < 2; ++i) animaux.push_back(new Aigle(&carte));
+        for (int i = 0; i < 6; ++i) animaux.push_back(new Renard(&carte));
+        for (int i = 0; i < 18; ++i) animaux.push_back(new Lapin(&carte));
     }
 
-private:
-    void deplacementAleatoire(int distance) {
-        int dx[] = { 0, 1, 0, -1 };
-        int dy[] = { 1, 0, -1, 0 };
+    ~Jeu() {
+        // Libère la mémoire allouée pour chaque animal
+        for (auto& animal : animaux) delete animal;
+    }
 
-        int direction = rand() % 4;
-        int nx = pos.x + dx[direction] * distance;
-        int ny = pos.y + dy[direction] * distance;
+    void demarrer() {
+        char choix;
+        do {
+            carte.afficherCarte(); // Affiche la carte
 
-        if (carte->estlibre(nx, ny)) {
-            carte->mettreAJourPosition(pos, Position(nx, ny), symbole, couleur);
-        }
+            std::cout << "Voulez-vous continuer ? (o/n): ";
+            std::cin >> choix;
+
+            if (choix == 'o') {
+                // Déplacer chaque animal
+                for (auto& animal : animaux) {
+                    animal->seDeplacer();
+                }
+            }
+        } while (choix == 'o');
     }
 };
 
 int main() {
-    srand(time(0));  // Initialise le générateur de nombres aléatoires
+    srand(static_cast<unsigned>(time(0))); // Initialise le générateur de nombres aléatoires
 
-    Carte carte;
-    Aigle aigle(5, 5, &carte);
-    Renard renard(10, 10, &carte);
-    Lapin lapin(15, 15, &carte);
-
-    carte.afficherCarte();
-
-    // Simulation d'un tour de déplacement
-    std::cout << "\nDéplacement des animaux :\n";
-    aigle.seDeplacer();
-    renard.seDeplacer();
-    lapin.seDeplacer();
-
-    carte.afficherCarte();
+    Jeu jeu;
+    jeu.demarrer();
 
     return 0;
 }
