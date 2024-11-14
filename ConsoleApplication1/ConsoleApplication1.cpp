@@ -65,7 +65,7 @@ public:
     }
 
     void resetReproduction() {
-        Lapin::totalManges = max(0, Renard::totalManges - 2);  //Empêche les valeurs négatives
+        Lapin::totalManges = max(0,Renard::totalManges - 2);  //Empêche les valeurs négatives
         eauBue -= 4;
     }
 
