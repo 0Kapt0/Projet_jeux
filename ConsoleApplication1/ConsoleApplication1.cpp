@@ -65,7 +65,7 @@ public:
     }
 
     void resetReproduction() {
-        Lapin::totalManges = max(0, Renard::totalManges - 2);  //Empêche les valeurs négatives
+        Lapin::totalManges = max(0, Lapin::totalManges - 2);  //Empêche les valeurs négatives
         eauBue -= 4;
     }
 
@@ -184,7 +184,7 @@ public:
 
     void resetReproduction() {
         eauBue -= 8;
-        Aigle::totalManges = max(0, Renard::totalManges - 2);  //Empêche les valeurs négatives
+        Aigle::totalManges = max(0, Aigle::totalManges - 2);  //Empêche les valeurs négatives
     }
 
     static void reproduire(vector<Aigle>& aigles) {
