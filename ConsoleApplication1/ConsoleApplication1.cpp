@@ -243,11 +243,14 @@ int main() {
     for (int tour = 0; tour < toursMax; ++tour) {
         Lapin::fuites = 0;
         Lapin::reproductions = 0;
+        Lapin::totalManges = 0;
 
         Renard::fuites = 0;
         Renard::reproductions = 0;
+        Renard::totalManges = 0;
 
         Aigle::reproductions = 0;
+        Aigle::totalManges = 0;
 
         // Actions des lapins
         for (auto& lapin : lapins) {
