@@ -217,16 +217,20 @@ void afficherStats(int tour) {
 
     cout << "Renards: " << Renard::population << "\n";
     cout << "Nb de lapins chasses: " << Renard::totalManges << "\n";
-    cout << "Nb de reproductions: " << Renard::reproductions << "\n\n";
+    cout << "Nb de reproductions: " << Renard::reproductions << "\n";
     cout << "Nb de fuites: " << Renard::fuites << "\n\n";
 
     cout << "Lapins: " << Lapin::population << "\n";
     cout << "Nb de trefles manges: " << Lapin::totalManges << "\n";
-    cout << "Nb de reproductions: " << Lapin::reproductions << "\n\n";
+    cout << "Nb de reproductions: " << Lapin::reproductions << "\n";
     cout << "Nb de fuites: " << Lapin::fuites << "\n\n";
 
     cout << "Quantite d'eau restante: " << Eau::quantite << "\n";
     cout << "Quantite de trefles restants: " << Trefle::quantite << "\n\n";
+    for (int i = 0; i <= 50; ++i) {
+        cout << "-";
+    }
+    cout << "\n\n";
 }
 
 int main() {
