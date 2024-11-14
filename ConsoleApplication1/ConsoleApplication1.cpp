@@ -240,6 +240,11 @@ int main() {
 
     cout << "Bienvenue Dans le jeu de la foret:" << "\n\n";
 
+    for (int i = 0; i <= 50; ++i) {
+        cout << "-";
+    }
+    cout << "\n\n";
+
     cout << "Aigles: " << Aigle::population << "\n";
     cout << "Nb de renards chasses: " << Aigle::totalMangesRenards << "\n";
     cout << "Nb de reproductions: " << Aigle::reproductions << "\n\n";
