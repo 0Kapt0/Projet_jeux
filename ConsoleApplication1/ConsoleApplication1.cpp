@@ -232,6 +232,8 @@ int main() {
     vector<Renard> renards(Renard::population);
     vector<Lapin> lapins(Lapin::population);
 
+    srand(static_cast<unsigned>(time(0))); //initailise le rand sur le temps pour le rendre vraiment aleatoire
+
     cout << "Bienvenue Dans le jeu de la foret:" << "\n\n";
 
     for (int i = 0; i <= 50; ++i) {
