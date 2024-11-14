@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <windows.h>
+
 using namespace std;
 
 class Eau {
@@ -103,7 +105,7 @@ public:
             lapins.erase(lapins.end() - 4, lapins.end());
             lapinsManges += 4;
             Lapin::population -= 4;
-            Lapin::totalManges += 4;
+            Lapin::totalManges +=4;
         }
     }
 
@@ -212,6 +214,24 @@ int main() {
     vector<Aigle> aigles(Aigle::population);
     vector<Renard> renards(Renard::population);
     vector<Lapin> lapins(Lapin::population);
+
+    cout << "Bienvenue Dans le jeu de la foret:" << "\n\n";
+
+    cout << "Aigles: " << Aigle::population << "\n";
+    cout << "Nb de renards chasses: " << Aigle::totalMangesRenards << "\n";
+    cout << "Nb de reproductions: " << Aigle::reproductions << "\n\n";
+
+    cout << "Renards: " << Renard::population << "\n";
+    cout << "Nb de lapins chasses: " << Renard::totalManges << "\n";
+    cout << "Nb de reproductions: " << Renard::reproductions << "\n\n";
+
+    cout << "Lapins: " << Lapin::population << "\n";
+    cout << "Nb de trefles manges: " << Lapin::totalManges << "\n";
+    cout << "Nb de reproductions: " << Lapin::reproductions << "\n\n";
+
+    cout << "Quantite d'eau restante: " << Eau::quantite << "\n";
+    cout << "Quantite de trefles restants: " << Trefle::quantite << "\n\n";
+
 
     const int toursMax = 15;
     for (int tour = 0; tour < toursMax; ++tour) {
