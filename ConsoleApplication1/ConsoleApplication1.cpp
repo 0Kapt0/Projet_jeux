@@ -59,7 +59,7 @@ public:
     }
 
     bool peutSeReproduire() const {
-        return treflesManges >= 10 && eauBue >= 10;
+        return treflesManges >= 2 && eauBue >= 2;
     }
 
     void resetReproduction() {
@@ -271,8 +271,16 @@ int main() {
     const int toursMax = 15;
     for (int tour = 0; tour < toursMax; ++tour) {
         Lapin::fuites = 0;
+        Lapin::totalManges = 0;
+        Lapin::reproductions = 0;
+
         Renard::fuites = 0;
         Renard::totalManges = 0;
+        Renard::reproductions = 0;
+
+        Aigle::totalManges = 0;
+        Aigle::reproductions = 0;
+
         // Actions des lapins
         for (auto& lapin : lapins) {
             lapin.boire();
