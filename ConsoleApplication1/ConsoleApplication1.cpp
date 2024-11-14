@@ -112,10 +112,9 @@ public:
                 Renard::totalManges += 2;
             }
         }
-        else if (Lapin::population >= 1){
+        else if (Lapin::population >= 1) {
             Lapin::fuites++;
         }
-
     }
 
     bool peutSeReproduire() const {
@@ -123,7 +122,6 @@ public:
     }
 
     void resetReproduction() {
-        Lapin::totalManges;
         eauBue = 0;
     }
 
@@ -181,7 +179,6 @@ public:
     }
 
     void resetReproduction() {
-        Renard::totalManges;
         eauBue = 0;
     }
 
@@ -243,38 +240,14 @@ int main() {
     }
     cout << "\n\n";
 
-    cout << "Aigles: " << Aigle::population << "\n";
-    cout << "Nb de renards chasses: " << Aigle::totalManges << "\n";
-    cout << "Nb de reproductions: " << Aigle::reproductions << "\n\n";
-
-    cout << "Renards: " << Renard::population << "\n";
-    cout << "Nb de lapins chasses: " << Renard::totalManges << "\n";
-    cout << "Nb de reproductions: " << Renard::reproductions << "\n\n";
-
-    cout << "Lapins: " << Lapin::population << "\n";
-    cout << "Nb de trefles manges: " << Lapin::totalManges << "\n";
-    cout << "Nb de reproductions: " << Lapin::reproductions << "\n\n";
-
-    cout << "Quantite d'eau restante: " << Eau::quantite << "\n";
-    cout << "Quantite de trefles restants: " << Trefle::quantite << "\n\n";
-
-    
-    for (int i = 0; i <= 50; ++i) {
-        cout << "-";
-    }
-    cout << "\n\n";
-
     const int toursMax = 15;
     for (int tour = 0; tour < toursMax; ++tour) {
         Lapin::fuites = 0;
-        Lapin::totalManges = 0;
         Lapin::reproductions = 0;
 
         Renard::fuites = 0;
-        Renard::totalManges = 0;
         Renard::reproductions = 0;
 
-        Aigle::totalManges = 0;
         Aigle::reproductions = 0;
 
         // Actions des lapins
