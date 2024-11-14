@@ -87,6 +87,7 @@ public:
 int Lapin::population = 18;
 int Lapin::totalManges = 0;
 int Lapin::reproductions = 0;
+int Lapin::fuites = 0;
 
 class Renard {
 public:
@@ -147,6 +148,7 @@ public:
 int Renard::population = 8;
 int Renard::totalManges = 0;
 int Renard::reproductions = 0;
+int Renard::fuites = 0;
 
 class Aigle {
 public:
@@ -232,7 +234,6 @@ int main() {
     vector<Renard> renards(Renard::population);
     vector<Lapin> lapins(Lapin::population);
 
-<<<<<<< Updated upstream
     cout << "Bienvenue Dans le jeu de la foret:" << "\n\n";
 
     cout << "Aigles: " << Aigle::population << "\n";
@@ -250,12 +251,12 @@ int main() {
     cout << "Quantite d'eau restante: " << Eau::quantite << "\n";
     cout << "Quantite de trefles restants: " << Trefle::quantite << "\n\n";
 
-=======
     //afficherStats();
->>>>>>> Stashed changes
 
     const int toursMax = 15;
     for (int tour = 0; tour < toursMax; ++tour) {
+        Lapin::fuites = 0;
+        Renard::fuites = 0;
         // Actions des lapins
         for (auto& lapin : lapins) {
             lapin.boire();
