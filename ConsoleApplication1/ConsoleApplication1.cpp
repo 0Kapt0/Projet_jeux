@@ -110,7 +110,8 @@ public:
                 lapins.erase(lapins.end() - 4, lapins.end());
                 lapinsManges += 4;
                 Lapin::population -= 4;
-                Lapin::totalManges +=4;
+                Lapin::totalManges += 4;
+                Renard::totalManges += 4;
             }
         }
         else{
@@ -153,7 +154,7 @@ int Renard::fuites = 0;
 class Aigle {
 public:
     static int population;
-    static int totalMangesRenards;
+    static int totalManges;
     static int reproductions;
 
     int renardsManges = 0;
@@ -170,7 +171,8 @@ public:
                 renards.erase(renards.end() - 2, renards.end());
                 renardsManges += 2;
                 Renard::population -= 2;
-                totalMangesRenards += 2;
+                Renard::totalManges += 2;
+                Aigle::totalManges += 2;
             }
         }
         else{
@@ -205,14 +207,14 @@ public:
     }
 };
 int Aigle::population = 2;
-int Aigle::totalMangesRenards = 0;
+int Aigle::totalManges = 0;
 int Aigle::reproductions = 0;
 
 void afficherStats(int tour) {
     cout << "Tour " << tour + 1 << ":\n";
 
     cout << "Aigles: " << Aigle::population << "\n";
-    cout << "Nb de renards chasses: " << Aigle::totalMangesRenards << "\n";
+    cout << "Nb de renards chasses: " << Aigle::totalManges << "\n";
     cout << "Nb de reproductions: " << Aigle::reproductions << "\n\n";
 
     cout << "Renards: " << Renard::population << "\n";
@@ -246,7 +248,7 @@ int main() {
     cout << "\n\n";
 
     cout << "Aigles: " << Aigle::population << "\n";
-    cout << "Nb de renards chasses: " << Aigle::totalMangesRenards << "\n";
+    cout << "Nb de renards chasses: " << Aigle::totalManges << "\n";
     cout << "Nb de reproductions: " << Aigle::reproductions << "\n\n";
 
     cout << "Renards: " << Renard::population << "\n";
@@ -260,12 +262,17 @@ int main() {
     cout << "Quantite d'eau restante: " << Eau::quantite << "\n";
     cout << "Quantite de trefles restants: " << Trefle::quantite << "\n\n";
 
-    //afficherStats();
+    
+    for (int i = 0; i <= 50; ++i) {
+        cout << "-";
+    }
+    cout << "\n\n";
 
     const int toursMax = 15;
     for (int tour = 0; tour < toursMax; ++tour) {
         Lapin::fuites = 0;
         Renard::fuites = 0;
+        Renard::totalManges = 0;
         // Actions des lapins
         for (auto& lapin : lapins) {
             lapin.boire();
