@@ -104,17 +104,19 @@ public:
         if (Eau::boire(5)) eauBue += 5;
     }
 
-    void manger() {
+    void manger(vector<Lapin>& lapins) {
         if (Renard::population >= 1 && Lapin::population >= 2) {
             int p = rand() % 2;
             if (p == 1) {
-                if (Lapin::population >= 2) {
+                if (lapins.size() >= 2) {
+                    lapins.pop_back();
+                    lapins.pop_back(); 
                     Lapin::population -= 2;
                     Renard::totalManges += 2;
                 }
-            }
-            else if (Lapin::population >= 1) {
-                Lapin::fuites;
+                else if (lapins.size() >= 1) {
+                    Lapin::fuites++;
+                }
             }
         }
         
@@ -163,17 +165,19 @@ public:
         if (Eau::boire(8)) eauBue += 8;
     }
 
-    void manger() {
+    void manger(vector<Renard>& renards) {
         if (Aigle::population >= 1 && Renard::population >= 2) {
             int p = rand() % 2;
             if (p == 1) {
-                if (Renard::population >= 2) {
+                if (renards.size() >= 2) {
+                    renards.pop_back();
+                    renards.pop_back();
                     Renard::population -= 2;
                     Aigle::totalManges += 2;
                 }
-            }
-            else if (Renard::population >= 1) {
-                Renard::fuites++;
+                else if (renards.size() >= 1) {
+                    Renard::fuites++;
+                }
             }
         }
     }
@@ -330,13 +334,13 @@ int main() {
 
         for (auto& renard : renards) {
             renard.boire();
-            renard.manger();
+            renard.manger(lapins);
         }
         Renard::reproduire(renards);
 
         for (auto& aigle : aigles) {
             aigle.boire();
-            aigle.manger();
+            aigle.manger(renards);
         }
         Aigle::reproduire(aigles);
 
