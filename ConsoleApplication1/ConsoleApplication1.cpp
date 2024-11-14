@@ -179,11 +179,11 @@ public:
     }
 
     bool peutSeReproduire() const {
-        return Renard::totalManges >= 2 && eauBue >= 10;
+        return Renard::totalManges >= 6 && eauBue >= 15;
     }
 
     void resetReproduction() {
-        eauBue = 5;
+        eauBue = 0;
     }
 
     static void reproduire(vector<Aigle>& aigles) {
@@ -232,19 +232,44 @@ void afficherStats(int tour) {
     cout << "\n\n";
 }
 
+void modifierPopulations() {
+    int choix, nb;
+
+    cout << "Choisissez la population à modifier :\n";
+    cout << "1. Aigles\n";
+    cout << "2. Renards\n";
+    cout << "3. Lapins\n";
+    cout << "4. Retourner au menu principal\n";
+    cout << "Votre choix : ";
+    cin >> choix;
+
+    if (choix == 4) return;
+
+    cout << "Entrez le nouveau nombre : ";
+    cin >> nb;
+
+    switch (choix) {
+    case 1:
+        Aigle::population = nb;
+        break;
+    case 2:
+        Renard::population = nb;
+        break;
+    case 3:
+        Lapin::population = nb;
+        break;
+    default:
+        cout << "Choix invalide.\n";
+    }
+    cout << "Population modifiée avec succès !\n\n";
+}
+
 int main() {
     vector<Aigle> aigles(Aigle::population);
     vector<Renard> renards(Renard::population);
     vector<Lapin> lapins(Lapin::population);
 
-    srand(static_cast<unsigned>(time(0))); //initailise le rand sur le temps pour le rendre vraiment aleatoire
-
-    cout << "Bienvenue Dans le jeu de la foret:" << "\n\n";
-
-    for (int i = 0; i <= 50; ++i) {
-        cout << "-";
-    }
-    cout << "\n\n";
+    cout << "Bienvenue dans le jeu de la foret !\n\n";
 
     cout << "Aigles: " << Aigle::population << "\n";
     cout << "Nb de renards chasses: " << Aigle::totalManges << "\n";
@@ -269,32 +294,31 @@ int main() {
 
     const int toursMax = 15;
     for (int tour = 0; tour < toursMax; ++tour) {
+        // Réinitialisation des statistiques
         Lapin::fuites = 0;
-        Lapin::reproductions = 0;
         Lapin::totalManges = 0;
+        Lapin::reproductions = 0;
 
         Renard::fuites = 0;
-        Renard::reproductions = 0;
         Renard::totalManges = 0;
+        Renard::reproductions = 0;
 
-        Aigle::reproductions = 0;
         Aigle::totalManges = 0;
+        Aigle::reproductions = 0;
 
-        // Actions des lapins
+        // Actions de chaque type d'individu
         for (auto& lapin : lapins) {
             lapin.boire();
             lapin.manger();
         }
         Lapin::reproduire(lapins);
 
-        // Actions des renards
         for (auto& renard : renards) {
             renard.boire();
             renard.manger(lapins);
         }
         Renard::reproduire(renards);
 
-        // Actions des aigles
         for (auto& aigle : aigles) {
             aigle.boire();
             aigle.manger(renards);
@@ -307,6 +331,27 @@ int main() {
 
         // Affichage des statistiques pour ce tour
         afficherStats(tour);
+
+        // Interaction avec l'utilisateur
+        int choix;
+        cout << "Voulez-vous :\n";
+        cout << "1. Passer au tour suivant\n";
+        cout << "2. Modifier le nombre d'individus\n";
+        cout << "3. Quitter la simulation\n";
+        cout << "Votre choix : ";
+        cin >> choix;
+
+        if (choix == 2) {
+            modifierPopulations();
+            // Mise à jour des vecteurs avec les nouvelles populations
+            aigles.resize(Aigle::population);
+            renards.resize(Renard::population);
+            lapins.resize(Lapin::population);
+        }
+        else if (choix == 3) {
+            cout << "Simulation terminee apres " << tour + 1 << " tours.\n";
+            break;
+        }
     }
 
     cout << "Simulation terminee apres " << toursMax << " tours.\n";
