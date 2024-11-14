@@ -9,7 +9,7 @@ public:
     static int quantite;
 
     static void produire() {
-        quantite += 10;
+        quantite += 30;
     }
 
     static bool boire(int quantiteBoire) {
@@ -20,14 +20,14 @@ public:
         return false;
     }
 };
-int Eau::quantite = 100;
+int Eau::quantite = 300;
 
 class Trefle {
 public:
     static int quantite;
 
     static void produire() {
-        quantite += 5;
+        quantite += 10;
     }
 
     static bool manger(int quantiteManger) {
@@ -106,12 +106,11 @@ public:
     void manger(vector<Lapin>& lapins) {
         int p = rand() % 2;
         if (p == 1) {
-            if (lapins.size() >= 4) {
-                lapins.erase(lapins.end() - 4, lapins.end());
-                lapinsManges += 4;
-                Lapin::population -= 4;
-                Lapin::totalManges += 4;
-                Renard::totalManges += 4;
+            if (lapins.size() >= 2) {
+                lapins.erase(lapins.end() - 2, lapins.end());
+                Lapin::population -= 2;
+                Lapin::totalManges += 2;
+                Renard::totalManges += 2;
             }
         }
         else{
@@ -169,7 +168,6 @@ public:
         if (p == 1) {
             if (renards.size() >= 2) {
                 renards.erase(renards.end() - 2, renards.end());
-                renardsManges += 2;
                 Renard::population -= 2;
                 Renard::totalManges += 2;
                 Aigle::totalManges += 2;
