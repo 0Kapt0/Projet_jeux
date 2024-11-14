@@ -140,7 +140,7 @@ int Renard::reproductions = 0;
 class Aigle {
 public:
     static int population;
-    static int totalManges;
+    static int totalMangesRenards;
     static int reproductions;
 
     int renardsManges = 0;
@@ -155,7 +155,7 @@ public:
             renards.erase(renards.end() - 2, renards.end());
             renardsManges += 2;
             Renard::population -= 2;
-            Renard::totalManges += 2;
+            totalMangesRenards += 2;
         }
     }
 
@@ -186,17 +186,26 @@ public:
     }
 };
 int Aigle::population = 2;
-int Aigle::totalManges = 0;
+int Aigle::totalMangesRenards = 0;
 int Aigle::reproductions = 0;
 
 void afficherStats(int tour) {
     cout << "Tour " << tour + 1 << ":\n";
-    cout << "Aigles: " << Aigle::population << ", Renards: " << Renard::population
-        << ", Lapins: " << Lapin::population << "\n";
-    cout << "Total Aigles manges: " << Aigle::totalManges << ", Reproductions: " << Aigle::reproductions << "\n";
-    cout << "Total Renards manges: " << Renard::totalManges << ", Reproductions: " << Renard::reproductions << "\n";
-    cout << "Total Lapins manges: " << Lapin::totalManges << ", Reproductions: " << Lapin::reproductions << "\n";
-    cout << "Quantite d'eau: " << Eau::quantite << ", Quantite de trefles: " << Trefle::quantite << "\n\n";
+
+    cout << "Aigles: " << Aigle::population << "\n";
+    cout << "Nb de renards chasses: " << Aigle::totalMangesRenards << "\n";
+    cout << "Nb de reproductions: " << Aigle::reproductions << "\n\n";
+
+    cout << "Renards: " << Renard::population << "\n";
+    cout << "Nb de lapins chasses: " << Renard::totalManges << "\n";
+    cout << "Nb de reproductions: " << Renard::reproductions << "\n\n";
+
+    cout << "Lapins: " << Lapin::population << "\n";
+    cout << "Nb de trefles manges: " << Lapin::totalManges << "\n";
+    cout << "Nb de reproductions: " << Lapin::reproductions << "\n\n";
+
+    cout << "Quantite d'eau restante: " << Eau::quantite << "\n";
+    cout << "Quantite de trefles restants: " << Trefle::quantite << "\n\n";
 }
 
 int main() {
@@ -238,5 +247,3 @@ int main() {
     cout << "Simulation terminee apres " << toursMax << " tours.\n";
     return 0;
 }
-
-
