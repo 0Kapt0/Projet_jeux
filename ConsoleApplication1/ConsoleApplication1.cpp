@@ -215,6 +215,7 @@ int main() {
     vector<Renard> renards(Renard::population);
     vector<Lapin> lapins(Lapin::population);
 
+<<<<<<< Updated upstream
     cout << "Bienvenue Dans le jeu de la foret:" << "\n\n";
 
     cout << "Aigles: " << Aigle::population << "\n";
@@ -232,6 +233,9 @@ int main() {
     cout << "Quantite d'eau restante: " << Eau::quantite << "\n";
     cout << "Quantite de trefles restants: " << Trefle::quantite << "\n\n";
 
+=======
+    //afficherStats();
+>>>>>>> Stashed changes
 
     const int toursMax = 15;
     for (int tour = 0; tour < toursMax; ++tour) {
