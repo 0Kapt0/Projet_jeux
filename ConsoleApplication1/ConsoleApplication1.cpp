@@ -54,15 +54,15 @@ public:
     }
 
     void manger() {
-        if (Trefle::manger(4)) treflesManges += 4;
+        if (Trefle::manger(4)) Lapin::totalManges += 4;
     }
 
     bool peutSeReproduire() const {
-        return treflesManges >= 2 && eauBue >= 2;
+        return Lapin::totalManges >= 2 && eauBue >= 2;
     }
 
     void resetReproduction() {
-        treflesManges -= 2;
+        Lapin::totalManges -= 2;
         eauBue -= 2;
     }
 
@@ -112,7 +112,7 @@ public:
                 }
             }
             else if (Lapin::population >= 1) {
-                Lapin::fuites++;
+                Renard::totalManges += 2;
             }
         }
         
@@ -124,7 +124,7 @@ public:
 
     void resetReproduction() {
         eauBue -= 4;
-        Lapin::totalManges -= 2;
+        Renard::totalManges -= 2;
     }
 
     static void reproduire(vector<Renard>& renards) {
@@ -178,12 +178,12 @@ public:
     }
 
     bool peutSeReproduire() const {
-        return Renard::totalManges >= 2 && eauBue >= 5;
+        return Aigle::totalManges >= 2 && eauBue >= 5;
     }
 
     void resetReproduction() {
         eauBue -= 5;
-        Renard::totalManges -= 2;
+        Aigle::totalManges -= 2;
     }
 
     static void reproduire(vector<Aigle>& aigles) {
