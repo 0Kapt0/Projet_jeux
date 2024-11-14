@@ -4,7 +4,7 @@
 #include <ctime>
 #include <Windows.h>
 
-//Dimensions de la carte
+//Dimensions de la carte qqqqqq
 const int LARGEUR_MAP = 20;
 const int HAUTEUR_MAP = 20;
 
