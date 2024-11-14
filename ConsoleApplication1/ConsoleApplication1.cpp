@@ -62,8 +62,8 @@ public:
     }
 
     void resetReproduction() {
-        treflesManges = 0;
-        eauBue = 0;
+        treflesManges -= 2;
+        eauBue -= 2;
     }
 
     static void reproduire(vector<Lapin>& lapins) {
@@ -98,30 +98,33 @@ public:
     int eauBue = 0;
 
     void boire() {
-        if (Eau::boire(4)) eauBue += 4;
+        if (Eau::boire(4)) eauBue += 8;
     }
 
     void manger(vector<Lapin>& lapins) {
-        int p = rand() % 2;
-        if (p == 1) {
-            if (lapins.size() >= 2) {
-                lapins.erase(lapins.end() - 2, lapins.end());
-                Lapin::population -= 2;
-                Lapin::totalManges += 2;
-                Renard::totalManges += 2;
+        if (Lapin::population >= 1) {
+            int p = rand() % 2;
+            if (p == 1) {
+                if (lapins.size() >= 2) {
+                    lapins.erase(lapins.end() - 2, lapins.end());
+                    Lapin::population -= 2;
+                    Lapin::totalManges += 2;
+                    Renard::totalManges += 2;
+                }
+            }
+            else if (Lapin::population >= 1) {
+                Lapin::fuites++;
             }
         }
-        else if (Lapin::population >= 1) {
-            Lapin::fuites++;
-        }
+        
     }
 
     bool peutSeReproduire() const {
-        return Lapin::totalManges >= 4 && eauBue >= 4;
+        return Lapin::totalManges >= 2 && eauBue >= 4;
     }
 
     void resetReproduction() {
-        eauBue = 0;
+        eauBue -= 4;
     }
 
     static void reproduire(vector<Renard>& renards) {
@@ -155,30 +158,32 @@ public:
     int eauBue = 0;
 
     void boire() {
-        if (Eau::boire(4)) eauBue += 5;
+        if (Eau::boire(4)) eauBue += 10;
     }
 
     void manger(vector<Renard>& renards) {
-        int p = rand() % 2;
-        if (p == 1) {
-            if (renards.size() >= 2) {
-                renards.erase(renards.end() - 2, renards.end());
-                Renard::population -= 2;
-                Renard::totalManges += 2;
-                Aigle::totalManges += 2;
+        if (Renard::population >= 1) {
+            int p = rand() % 2;
+            if (p == 1) {
+                if (renards.size() >= 2) {
+                    renards.erase(renards.end() - 2, renards.end());
+                    Renard::population -= 2;
+                    Renard::totalManges += 2;
+                    Aigle::totalManges += 2;
+                }
             }
-        }
-        else if (Renard::population >= 1) {
-            Renard::fuites++;
+            else if (Renard::population >= 1) {
+                Renard::fuites++;
+            }
         }
     }
 
     bool peutSeReproduire() const {
-        return Renard::totalManges >= 6 && eauBue >= 15;
+        return Renard::totalManges >= 2 && eauBue >= 10;
     }
 
     void resetReproduction() {
-        eauBue = 0;
+        eauBue = 5;
     }
 
     static void reproduire(vector<Aigle>& aigles) {
@@ -236,6 +241,27 @@ int main() {
 
     cout << "Bienvenue Dans le jeu de la foret:" << "\n\n";
 
+    for (int i = 0; i <= 50; ++i) {
+        cout << "-";
+    }
+    cout << "\n\n";
+
+    cout << "Aigles: " << Aigle::population << "\n";
+    cout << "Nb de renards chasses: " << Aigle::totalManges << "\n";
+    cout << "Nb de reproductions: " << Aigle::reproductions << "\n\n";
+
+    cout << "Renards: " << Renard::population << "\n";
+    cout << "Nb de lapins chasses: " << Renard::totalManges << "\n";
+    cout << "Nb de reproductions: " << Renard::reproductions << "\n";
+    cout << "Nb de fuites: " << Renard::fuites << "\n\n";
+
+    cout << "Lapins: " << Lapin::population << "\n";
+    cout << "Nb de trefles manges: " << Lapin::totalManges << "\n";
+    cout << "Nb de reproductions: " << Lapin::reproductions << "\n";
+    cout << "Nb de fuites: " << Lapin::fuites << "\n\n";
+
+    cout << "Quantite d'eau restante: " << Eau::quantite << "\n";
+    cout << "Quantite de trefles restants: " << Trefle::quantite << "\n\n";
     for (int i = 0; i <= 50; ++i) {
         cout << "-";
     }
