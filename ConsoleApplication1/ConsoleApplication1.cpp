@@ -237,7 +237,7 @@ void afficherStats(int tour) {
 void modifierPopulations() {
     int choix, nb;
 
-    cout << "Choisissez la population à modifier :\n";
+    cout << "Choisissez la population a modifier :\n";
     cout << "1. Aigles\n";
     cout << "2. Renards\n";
     cout << "3. Lapins\n";
@@ -263,7 +263,7 @@ void modifierPopulations() {
     default:
         cout << "Choix invalide.\n";
     }
-    cout << "Population modifiée avec succès !\n\n";
+    cout << "Population modifiee avec succes !\n\n";
 }
 
 int main() {
@@ -338,7 +338,7 @@ int main() {
         int choix;
         cout << "Voulez-vous :\n";
         cout << "1. Passer au tour suivant\n";
-        cout << "2. Modifier le nombre d'individus\n";
+        cout << "2. Modifier le nombre individus\n";
         cout << "3. Quitter la simulation\n";
         cout << "Votre choix : ";
         cin >> choix;
