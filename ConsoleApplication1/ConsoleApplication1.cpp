@@ -271,6 +271,8 @@ int main() {
     vector<Renard> renards(Renard::population);
     vector<Lapin> lapins(Lapin::population);
 
+    srand(time(0));
+
     cout << "Bienvenue dans le jeu de la foret !\n\n";
 
     cout << "Aigles: " << Aigle::population << "\n";
