@@ -263,7 +263,7 @@ void modifierPopulations() {
     default:
         cout << "Choix invalide.\n";
     }
-    cout << "Population modifiee avec succes !\n\n";
+    cout << "Population modifiee \n\n";
 }
 
 int main() {
