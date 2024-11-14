@@ -125,6 +125,7 @@ public:
 
     void resetReproduction() {
         eauBue -= 4;
+        Lapin::totalManges -= 2;
     }
 
     static void reproduire(vector<Renard>& renards) {
@@ -179,11 +180,12 @@ public:
     }
 
     bool peutSeReproduire() const {
-        return Renard::totalManges >= 6 && eauBue >= 15;
+        return Renard::totalManges >= 2 && eauBue >= 5;
     }
 
     void resetReproduction() {
-        eauBue = 0;
+        eauBue -= 5;
+        Renard::totalManges -= 2;
     }
 
     static void reproduire(vector<Aigle>& aigles) {
