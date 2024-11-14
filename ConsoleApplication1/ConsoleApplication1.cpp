@@ -125,6 +125,7 @@ public:
 
     void resetReproduction() {
         eauBue -= 4;
+        Lapin::totalManges -= 2;
     }
 
     static void reproduire(vector<Renard>& renards) {
@@ -179,11 +180,12 @@ public:
     }
 
     bool peutSeReproduire() const {
-        return Renard::totalManges >= 6 && eauBue >= 15;
+        return Renard::totalManges >= 2 && eauBue >= 5;
     }
 
     void resetReproduction() {
-        eauBue = 0;
+        eauBue -= 5;
+        Renard::totalManges -= 2;
     }
 
     static void reproduire(vector<Aigle>& aigles) {
@@ -236,7 +238,7 @@ void afficherStats(int tour) {
 void modifierPopulations() {
     int choix, nb;
 
-    cout << "Choisissez la population à modifier :\n";
+    cout << "Choisissez la population a modifier :\n";
     cout << "1. Aigles\n";
     cout << "2. Renards\n";
     cout << "3. Lapins\n";
@@ -262,13 +264,15 @@ void modifierPopulations() {
     default:
         cout << "Choix invalide.\n";
     }
-    cout << "Population modifiée avec succès !\n\n";
+    cout << "Population modifiee \n\n";
 }
 
 int main() {
     vector<Aigle> aigles(Aigle::population);
     vector<Renard> renards(Renard::population);
     vector<Lapin> lapins(Lapin::population);
+
+    srand(time(0));
 
     cout << "Bienvenue dans le jeu de la foret !\n\n";
 
@@ -337,7 +341,7 @@ int main() {
         int choix;
         cout << "Voulez-vous :\n";
         cout << "1. Passer au tour suivant\n";
-        cout << "2. Modifier le nombre d'individus\n";
+        cout << "2. Modifier le nombre individus\n";
         cout << "3. Quitter la simulation\n";
         cout << "Votre choix : ";
         cin >> choix;
