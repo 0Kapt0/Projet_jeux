@@ -232,6 +232,7 @@ void afficherStats(int tour) {
     cout << "\n\n";
 }
 
+
 void modifierPopulations() {
     int choix, nb;
 
