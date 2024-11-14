@@ -296,6 +296,9 @@ int main() {
     cout << "\n\n";
 
     const int toursMax = 15;
+
+    
+
     for (int tour = 0; tour < toursMax; ++tour) {
         // Réinitialisation des statistiques
         Lapin::fuites = 0;
@@ -308,6 +311,14 @@ int main() {
 
         Aigle::totalManges = 0;
         Aigle::reproductions = 0;
+
+        int choix;
+        cout << "Voulez-vous :\n";
+        cout << "1. Passer au tour suivant\n";
+        cout << "2. Modifier le nombre individus\n";
+        cout << "3. Quitter la simulation\n";
+        cout << "Votre choix : ";
+        cin >> choix;
 
         // Actions de chaque type d'individu
         for (auto& lapin : lapins) {
@@ -336,13 +347,7 @@ int main() {
         afficherStats(tour);
 
         // Interaction avec l'utilisateur
-        int choix;
-        cout << "Voulez-vous :\n";
-        cout << "1. Passer au tour suivant\n";
-        cout << "2. Modifier le nombre individus\n";
-        cout << "3. Quitter la simulation\n";
-        cout << "Votre choix : ";
-        cin >> choix;
+        
 
         if (choix == 2) {
             modifierPopulations();
