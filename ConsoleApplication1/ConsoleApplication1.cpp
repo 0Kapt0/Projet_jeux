@@ -105,21 +105,20 @@ public:
         if (Lapin::population >= 1) {
             int p = rand() % 2;
             if (p == 1) {
-                if (lapins.size() >= 2) {
-                    lapins.erase(lapins.end() - 2, lapins.end());
+                if (Lapin::population >= 2) {
                     Lapin::population -= 2;
                     Renard::totalManges += 2;
                 }
             }
             else if (Lapin::population >= 1) {
-                Renard::totalManges += 2;
+                Lapin::fuites;
             }
         }
         
     }
 
     bool peutSeReproduire() const {
-        return Lapin::totalManges >= 2 && eauBue >= 4;
+        return Lapin::totalManges >= 2 && eauBue >= 8;
     }
 
     void resetReproduction() {
@@ -165,8 +164,7 @@ public:
         if (Renard::population >= 1) {
             int p = rand() % 2;
             if (p == 1) {
-                if (renards.size() >= 2) {
-                    renards.erase(renards.end() - 2, renards.end());
+                if (Renard::population >= 2) {
                     Renard::population -= 2;
                     Aigle::totalManges += 2;
                 }
