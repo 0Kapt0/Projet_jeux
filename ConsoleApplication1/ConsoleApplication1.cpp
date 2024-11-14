@@ -26,7 +26,7 @@ public:
     static int quantite;
 
     static void produire() {
-        quantite += 30;
+        quantite += 40;
     }
 
     static bool manger(int quantiteManger) {
@@ -54,16 +54,19 @@ public:
     }
 
     void manger() {
-        if (Trefle::manger(4)) Lapin::totalManges += 4;
+        if (Trefle::manger(4) && Trefle::quantite >= 4) {
+            treflesManges += 4;
+            Lapin::totalManges += 4;
+        }
     }
 
-    bool peutSeReproduire() const {
-        return Lapin::totalManges >= 2 && eauBue >= 2;
+     bool peutSeReproduire() const {
+        return treflesManges >= 4 && eauBue >= 4;
     }
 
     void resetReproduction() {
-        Lapin::totalManges -= 2;
-        eauBue -= 2;
+        Lapin::totalManges = max(0, Renard::totalManges - 2);  //Empêche les valeurs négatives
+        eauBue -= 4;
     }
 
     static void reproduire(vector<Lapin>& lapins) {
@@ -98,11 +101,11 @@ public:
     int eauBue = 0;
 
     void boire() {
-        if (Eau::boire(4)) eauBue += 8;
+        if (Eau::boire(5)) eauBue += 5;
     }
 
-    void manger(vector<Lapin>& lapins) {
-        if (Lapin::population >= 1) {
+    void manger() {
+        if (Renard::population >= 1 && Lapin::population >= 2) {
             int p = rand() % 2;
             if (p == 1) {
                 if (Lapin::population >= 2) {
@@ -118,12 +121,12 @@ public:
     }
 
     bool peutSeReproduire() const {
-        return Lapin::totalManges >= 2 && eauBue >= 8;
+        return Lapin::totalManges >= 2 && eauBue >= 5;
     }
 
     void resetReproduction() {
-        eauBue -= 4;
-        Renard::totalManges -= 2;
+        eauBue -= 5;
+        Renard::totalManges = max(0, Renard::totalManges - 2);  //Empêche les valeurs négatives
     }
 
     static void reproduire(vector<Renard>& renards) {
@@ -157,11 +160,11 @@ public:
     int eauBue = 0;
 
     void boire() {
-        if (Eau::boire(4)) eauBue += 10;
+        if (Eau::boire(8)) eauBue += 8;
     }
 
-    void manger(vector<Renard>& renards) {
-        if (Renard::population >= 1) {
+    void manger() {
+        if (Aigle::population >= 1 && Renard::population >= 2) {
             int p = rand() % 2;
             if (p == 1) {
                 if (Renard::population >= 2) {
@@ -176,12 +179,12 @@ public:
     }
 
     bool peutSeReproduire() const {
-        return Aigle::totalManges >= 2 && eauBue >= 5;
+        return Aigle::totalManges >= 2 && eauBue >= 8;
     }
 
     void resetReproduction() {
-        eauBue -= 5;
-        Aigle::totalManges -= 2;
+        eauBue -= 8;
+        Aigle::totalManges = max(0, Renard::totalManges - 2);  //Empêche les valeurs négatives
     }
 
     static void reproduire(vector<Aigle>& aigles) {
@@ -327,13 +330,13 @@ int main() {
 
         for (auto& renard : renards) {
             renard.boire();
-            renard.manger(lapins);
+            renard.manger();
         }
         Renard::reproduire(renards);
 
         for (auto& aigle : aigles) {
             aigle.boire();
-            aigle.manger(renards);
+            aigle.manger();
         }
         Aigle::reproduire(aigles);
 
