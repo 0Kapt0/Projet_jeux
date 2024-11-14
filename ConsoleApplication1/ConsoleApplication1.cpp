@@ -27,7 +27,7 @@ public:
     static int quantite;
 
     static void produire() {
-        quantite += 10;
+        quantite += 30;
     }
 
     static bool manger(int quantiteManger) {
@@ -38,7 +38,7 @@ public:
         return false;
     }
 };
-int Trefle::quantite = 100;
+int Trefle::quantite = 150;
 
 class Lapin {
 public:
@@ -96,7 +96,6 @@ public:
     static int reproductions;
     static int fuites;
 
-    int lapinsManges = 0;
     int eauBue = 0;
 
     void boire() {
@@ -113,18 +112,18 @@ public:
                 Renard::totalManges += 2;
             }
         }
-        else{
+        else if (Lapin::population >= 1){
             Lapin::fuites++;
         }
 
     }
 
     bool peutSeReproduire() const {
-        return lapinsManges >= 20 && eauBue >= 20;
+        return Lapin::totalManges >= 4 && eauBue >= 4;
     }
 
     void resetReproduction() {
-        lapinsManges = 0;
+        Lapin::totalManges;
         eauBue = 0;
     }
 
@@ -156,11 +155,10 @@ public:
     static int totalManges;
     static int reproductions;
 
-    int renardsManges = 0;
     int eauBue = 0;
 
     void boire() {
-        if (Eau::boire(4)) eauBue += 4;
+        if (Eau::boire(4)) eauBue += 5;
     }
 
     void manger(vector<Renard>& renards) {
@@ -173,17 +171,17 @@ public:
                 Aigle::totalManges += 2;
             }
         }
-        else{
+        else if (Renard::population >= 1) {
             Renard::fuites++;
         }
     }
 
     bool peutSeReproduire() const {
-        return renardsManges >= 30 && eauBue >= 30;
+        return Renard::totalManges >= 6 && eauBue >= 15;
     }
 
     void resetReproduction() {
-        renardsManges = 0;
+        Renard::totalManges;
         eauBue = 0;
     }
 
