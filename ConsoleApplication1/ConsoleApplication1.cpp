@@ -108,7 +108,6 @@ public:
                 if (lapins.size() >= 2) {
                     lapins.erase(lapins.end() - 2, lapins.end());
                     Lapin::population -= 2;
-                    Lapin::totalManges += 2;
                     Renard::totalManges += 2;
                 }
             }
@@ -169,7 +168,6 @@ public:
                 if (renards.size() >= 2) {
                     renards.erase(renards.end() - 2, renards.end());
                     Renard::population -= 2;
-                    Renard::totalManges += 2;
                     Aigle::totalManges += 2;
                 }
             }
