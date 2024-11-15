@@ -230,7 +230,8 @@ void afficherStats(int tour) {
     cout << "Nb de reproductions: " << Renard::reproductions << "\n";
     cout << "Nb de fuites: " << Renard::fuites << "\n\n";
 
-    if (tour == 7) {
+    int p = rand() % 10;
+    if (p == 1) {
         cout << "YARE! YARE!\n";
     }
 
@@ -384,9 +385,16 @@ int main() {
     }
     cout << "\n\n";
 
-    const int toursMax = 15;
+    int toursMax;
+    cout << "Choisie le nombre de tour : ";
+    cin >> toursMax;
 
-    
+    cout << "\n";
+
+    for (int i = 0; i <= 50; ++i) {
+        cout << "-";
+    }
+    cout << "\n\n";
 
     for (int tour = 0; tour < toursMax; ++tour) {
         // Réinitialisation des statistiques
