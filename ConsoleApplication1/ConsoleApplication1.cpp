@@ -239,9 +239,9 @@ void afficherStats(int tour) {
 
 
 void modifierPopulations() {
-    int choix, nb;
+    int choix, nb, souschoix;
 
-    cout << "Choisissez la population a modifier :\n";
+    cout << "Choisissez la population que vous voulez controler :\n";
     cout << "1. Aigles\n";
     cout << "2. Renards\n";
     cout << "3. Lapins\n";
@@ -250,9 +250,6 @@ void modifierPopulations() {
     cin >> choix;
 
     if (choix == 4) return;
-
-    cout << "Entrez le nouveau nombre : ";
-    cin >> nb;
 
     switch (choix) {
     case 1:
@@ -266,8 +263,64 @@ void modifierPopulations() {
         break;
     default:
         cout << "Choix invalide.\n";
+        return;
     }
-    cout << "Population modifiee \n\n";
+    
+    cout << "Choisissez une action a modifier pour cette population :\n";
+    cout << "1. Ajouter 1 en reproduction\n";
+    cout << "2. Ajouter 1 en chasser\n";
+    cout << "3. Ajouter 1 en manger\n";
+    cout << "Votre choix : ";
+    cin >> souschoix;
+
+    switch (souschoix) {
+    case 1:
+        switch (choix) {
+        case 1:
+            Aigle::population += 1;
+            cout << "Reproduction d'Aigles augmentee de 1.\n";
+            break;
+        case 2:
+            Renard::population += 1;
+            cout << "Reproduction de Renards augmentee de 1.\n";
+            break;
+        case 3:
+            Lapin::population += 1;
+            cout << "Reproduction de Lapins augmentee de 1.\n";
+            break;
+        default:
+            cout << "Choix invalide.\n";
+            break;
+        }
+        break;
+
+    case 2:
+        switch (choix) {
+        case 1:
+            Aigle::totalManges += 1;
+            Renard::population -= 1;
+            cout << "Chasse des Aigles augmentee de 1.\n";
+            break;
+        case 2:
+            Renard::totalManges += 1;
+            Lapin::totalManges -= 1;
+            cout << "Chasse des Renards augmentee de 1.\n";
+            break;
+        case 3:
+            Lapin::totalManges += 1;
+            Trefle::quantite -= 2;
+            cout << "Ma des Lapins augmentee de 1.\n";
+            break;
+        default:
+            cout << "Choix invalide.\n";
+            break;
+        }
+        break;
+
+    default:
+        cout << "Choix invalide.\n";
+        break;
+    }
 }
 
 int main() {
