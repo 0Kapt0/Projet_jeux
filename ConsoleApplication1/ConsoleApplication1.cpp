@@ -355,7 +355,7 @@ int main() {
 
     srand(time(0));
 
-    cout << "Yokoso watashi no soul society !\n\n";
+    cout << "YOKOSO WATASHI NO SOUL SOCIETY !\n\n";
 
     cout << "Aigles: " << Aigle::population << "\n";
     cout << "Nb de renards chasses: " << Aigle::totalManges << "\n";
