@@ -239,8 +239,8 @@ void afficherStats(int tour) {
 
 
 void modifierPopulations() {
-    int choix, nb, souschoix;
-
+    int choix, souschoix;
+    int nb = 0;
     cout << "Choisissez la population que vous voulez controler :\n";
     cout << "1. Aigles\n";
     cout << "2. Renards\n";
