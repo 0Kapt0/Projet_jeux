@@ -245,12 +245,12 @@ void afficherStats(int tour) {
 
 
 void modifierPopulations() {
-    int choix, souschoix;
+    int choix, souschoix, nombre;
     cout << "Choisissez la population que vous voulez controler :\n";
     cout << "1. Aigles\n";
     cout << "2. Renards\n";
     cout << "3. Lapins\n";
-    cout << "4. Retourner au menu principal\n";
+    cout << "4. Retourner au menu principal\n\n";
     cout << "Votre choix : ";
     cin >> choix;
 
@@ -271,26 +271,28 @@ void modifierPopulations() {
         return;
     }
     
-    cout << "Choisissez une action a modifier pour cette population :\n";
-    cout << "1. Ajouter 1 en reproduction\n";
-    cout << "2. Ajouter 1 en chasser\n";
-    cout << "3. Reduire une espece de 1\n";
+    cout << "\nChoisissez une action a modifier pour cette population :\n";
+    cout << "1. Faire se reproduire\n";
+    cout << "2. Faire chasser chasser\n";
+    cout << "3. Reduire l'espece\n\n";
     cout << "Votre choix : ";
     cin >> souschoix;
+    cout << "\n\nCombien d'animaux voulez vous enlever/ajouter/chasser : ";
+    cin >> nombre;
 
     switch (souschoix) {
     case 1:
         switch (choix) {
         case 1:
-            Aigle::population += 1;
+            Aigle::population += nombre;
             cout << "Reproduction d'Aigles augmentee de 1.\n";
             break;
         case 2:
-            Renard::population += 1;
+            Renard::population += nombre;
             cout << "Reproduction de Renards augmentee de 1.\n";
             break;
         case 3:
-            Lapin::population += 1;
+            Lapin::population += nombre;
             cout << "Reproduction de Lapins augmentee de 1.\n";
             break;
         default:
@@ -302,18 +304,18 @@ void modifierPopulations() {
     case 2:
         switch (choix) {
         case 1:
-            Aigle::totalManges += 1;
-            Renard::population -= 1;
+            Aigle::totalManges += nombre;
+            Renard::population -= nombre;
             cout << "Chasse des Aigles augmentee de 1.\n";
             break;
         case 2:
-            Renard::totalManges += 1;
-            Lapin::totalManges -= 1;
+            Renard::totalManges += nombre;
+            Lapin::totalManges -= nombre;
             cout << "Chasse des Renards augmentee de 1.\n";
             break;
         case 3:
-            Lapin::totalManges += 1;
-            Trefle::quantite -= 4;
+            Lapin::totalManges += nombre;
+            Trefle::quantite -= nombre * 4;
             cout << "La nourriture des Lapins augmentee de 4.\n";
             break;
         default:
@@ -325,15 +327,15 @@ void modifierPopulations() {
     case 3:
         switch (choix) {
         case 1:
-            Aigle::population -= 1;
+            Aigle::population -= nombre;
             cout << "Nombres d'Aigles reduit de 1.\n";
             break;
         case 2:
-            Renard::population -= 1;
+            Renard::population -= nombre;
             cout << "Nombre de Renards reduit de 1.\n";
             break;
         case 3:
-            Lapin::population -= 1;
+            Lapin::population -= nombre;
             cout << "Nombre de Lapins reduit de 1.\n";
             break;
         default:
