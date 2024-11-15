@@ -355,7 +355,7 @@ int main() {
 
     srand(time(0));
 
-    cout << "Bienvenue dans le jeu de la foret !\n\n";
+    cout << "Yokoso watashi no soul society !\n\n";
 
     cout << "Aigles: " << Aigle::population << "\n";
     cout << "Nb de renards chasses: " << Aigle::totalManges << "\n";
