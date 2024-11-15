@@ -213,6 +213,12 @@ int Aigle::totalManges = 0;
 int Aigle::reproductions = 0;
 
 void afficherStats(int tour) {
+
+    for (int i = 0; i <= 50; ++i) {
+        cout << "-";
+    }
+    cout << "\n\n";
+
     cout << "Tour " << tour + 1 << ":\n";
 
     cout << "Aigles: " << Aigle::population << "\n";
