@@ -246,7 +246,6 @@ void afficherStats(int tour) {
 
 void modifierPopulations() {
     int choix, souschoix;
-    int nb = 0;
     cout << "Choisissez la population que vous voulez controler :\n";
     cout << "1. Aigles\n";
     cout << "2. Renards\n";
@@ -259,13 +258,13 @@ void modifierPopulations() {
 
     switch (choix) {
     case 1:
-        Aigle::population = nb;
+        Aigle::population;
         break;
     case 2:
-        Renard::population = nb;
+        Renard::population;
         break;
     case 3:
-        Lapin::population = nb;
+        Lapin::population;
         break;
     default:
         cout << "Choix invalide.\n";
@@ -275,6 +274,7 @@ void modifierPopulations() {
     cout << "Choisissez une action a modifier pour cette population :\n";
     cout << "1. Ajouter 1 en reproduction\n";
     cout << "2. Ajouter 1 en chasser\n";
+    cout << "3. Reduire une espece de 1\n";
     cout << "Votre choix : ";
     cin >> souschoix;
 
@@ -315,6 +315,26 @@ void modifierPopulations() {
             Lapin::totalManges += 1;
             Trefle::quantite -= 4;
             cout << "La nourriture des Lapins augmentee de 4.\n";
+            break;
+        default:
+            cout << "Choix invalide.\n";
+            break;
+        }
+        break;
+
+    case 3:
+        switch (choix) {
+        case 1:
+            Aigle::population -= 1;
+            cout << "Nombres d'Aigles reduit de 1.\n";
+            break;
+        case 2:
+            Renard::population -= 1;
+            cout << "Nombre de Renards reduit de 1.\n";
+            break;
+        case 3:
+            Lapin::population -= 1;
+            cout << "Nombre de Lapins reduit de 1.\n";
             break;
         default:
             cout << "Choix invalide.\n";
