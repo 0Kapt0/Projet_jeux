@@ -230,6 +230,10 @@ void afficherStats(int tour) {
     cout << "Nb de reproductions: " << Renard::reproductions << "\n";
     cout << "Nb de fuites: " << Renard::fuites << "\n\n";
 
+    if (tour == 7) {
+        cout << "YARE! YARE!\n";
+    }
+
     cout << "Lapins: " << Lapin::population << "\n";
     cout << "Nb de trefles manges: " << Lapin::totalManges << "\n";
     cout << "Nb de reproductions: " << Lapin::reproductions << "\n";
@@ -446,6 +450,8 @@ int main() {
             break;
         }
     }
+
+    cout << "Hado no kyujukyu: Goryutenmetsu !\n";
 
     cout << "Simulation terminee apres " << toursMax << " tours.\n";
     return 0;
