@@ -269,7 +269,6 @@ void modifierPopulations() {
     cout << "Choisissez une action a modifier pour cette population :\n";
     cout << "1. Ajouter 1 en reproduction\n";
     cout << "2. Ajouter 1 en chasser\n";
-    cout << "3. Ajouter 1 en manger\n";
     cout << "Votre choix : ";
     cin >> souschoix;
 
