@@ -307,8 +307,8 @@ void modifierPopulations() {
             break;
         case 3:
             Lapin::totalManges += 1;
-            Trefle::quantite -= 2;
-            cout << "Ma des Lapins augmentee de 1.\n";
+            Trefle::quantite -= 4;
+            cout << "La nourriture des Lapins augmentee de 4.\n";
             break;
         default:
             cout << "Choix invalide.\n";
@@ -372,7 +372,7 @@ int main() {
         int choix;
         cout << "Voulez-vous :\n";
         cout << "1. Passer au tour suivant\n";
-        cout << "2. Modifier le nombre individus\n";
+        cout << "2. Choisir une espece\n";
         cout << "3. Quitter la simulation\n";
         cout << "Votre choix : ";
         cin >> choix;
